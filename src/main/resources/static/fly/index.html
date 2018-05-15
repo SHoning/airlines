@@ -5,6 +5,23 @@
     <title>Fly!</title>
 </head>
 <body>
+<form data-toggle="validator" role="form" id="newAirplaneForm" onsubmit="return false;">
+    <div class="form-group">
+        <label for="airplane-select">Plane</label>
+        <select class="form-control" id="airplane-select" required="required">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="airport-select">Location to go to</label>
+        <select class="form-control" id="airport-select" required="required">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
+    </div>
+</form>
 
 </body>
 </html>

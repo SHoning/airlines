@@ -11,3 +11,15 @@ $("#airplanes").click( function(){
       $( "#page-home" ).html( data );
     });
 });
+
+$("#fly").click( function(){
+    $.get( "fly/index.html", function( data ) {
+      $( "#page-home" ).html( data );
+    });
+});
+
+$("#tank").click( function(){
+    $.get( "fuel/index.html", function( data ) {
+      $( "#page-home" ).html( data );
+    });
+});

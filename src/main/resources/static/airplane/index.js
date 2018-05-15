@@ -41,7 +41,7 @@ function getData() {
 
 $(document).ready(function () {
     // Modal Setup
-//    setSelectors(); MAKE A SETSELECTORS FOR THE AIRPORTS
+    setSelectors();
 
       // Modal submit.
         $("#newAirplaneForm").on('submit', function(e) {
@@ -60,7 +60,7 @@ $(document).ready(function () {
         columns: [
             { "data": "airplaneId" },
             { "data": "fuelInTons" },
-//            { "data": "airport.name" },
+            { "data": "airport.name" },
         ]
     });
 

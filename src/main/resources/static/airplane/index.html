@@ -5,8 +5,71 @@
     <title>Title</title>
 </head>
 <body>
+<div class=“row”>
+    <div class=“col-md-12”>
+        <button type="button" data-toggle="modal" data-target="#newAirplaneModal">Add new airplane</button>
+    </div>
+</div>
+<br/>
 
+<h1>Airplanes</h1>
+<br/>
 
+<div class=“row”>
+    <div class=“col-md-12”>
+        <table id="table_planes">
+            <thead>
+            <tr>
+                <th>Airplane Code</th>
+                <th>Fuel in Tons</th>
+                <th>Current Location</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Ingredient Modal-->
+<div id="newAirplaneModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Airplane</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="newAirplaneForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="name" class="control-label">Airplane Code</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fuel" class="control-label">Starting Fuel</label>
+                        <input type="number" step="1" class="form-control" id="fuel" min="1" max="5" required>
+                    </div>
+
+                    <!--TODO: Add Airports, in same way as Foodtypes!-->
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button id="closeIngButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of Ingredient Modal-->
+
+<script src="index.js"></script>
 
 </body>
 </html>

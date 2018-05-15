@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Airports</title>
 </head>
 <body>
+<div class=“row”>
+    <div class=“col-md-12”>
+        <button type="button" data-toggle="modal" data-target="#newAirportModal">Add new airport</button>
+    </div>
+</div>
+<br/>
+
+<h1>Airports</h1>
+<br/>
+
+<div class=“row”>
+    <div class=“col-md-12”>
+        <table id="table_airports">
+            <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--TODO: add A HIDDEN COLUMN THAT SHOWS ALL PLANES LOCATED AT THAT AIRPORT-->
+
+<!--Ingredient Modal-->
+<div id="newAirportModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Airport</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <form data-toggle="validator" role="form" id="newAirplaneForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="name" class="control-label">Airport Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+
+                    <!--TODO: Add Airplanes?-->
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button id="closeButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of Ingredient Modal-->
+
+<script src="index.js"></script>
 
 </body>
 </html>

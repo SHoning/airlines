@@ -1,4 +1,4 @@
-function postNewAirplane(){
+function postNewAirport(){
     var airport = {
         name :$("#name").val(),
     }
@@ -27,7 +27,7 @@ $(document).ready(function () {
 
       // Modal submit.
         $("#newAirportForm").on('submit', function(e) {
-                postNewAirplane();
+                postNewAirport();
 
                 // Reset modal to hide and no values.
                 $('#newAirportModal').modal('hide');
@@ -36,7 +36,7 @@ $(document).ready(function () {
         });
 
     // Load DataTable with data format.
-    $('#table_planes').DataTable({
+    $('#table_airports').DataTable({
         columns: [
             { "data": "name" },
         ]

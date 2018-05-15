@@ -14,6 +14,6 @@ public class Airport {
 
     private String name;
 
-    @OneToMany(mappedBy = "Airport")
-    private List<Airplane> Airplanes;
+    @OneToMany(mappedBy = "airport")
+    private List<Airplane> airplanes;
 }

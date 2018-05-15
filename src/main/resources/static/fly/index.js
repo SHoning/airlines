@@ -3,11 +3,13 @@ function setSelectors(){ // MAKE IT POSSIBLE TO HAVE A SEARCH FUNCTION IN THE SE
              url:"http://localhost:8080/api/airplane/all",
              type:"get",
              success: function(planes) {
+             console.table(planes)
                     html = "";
                     console.table(planes)
 
                      for(var key in planes) {
-                         html += "<option value=" + planes[key].id  + ">" +planes[key].name + "</option>"
+                         html += "<option value=" + planes[key].id  + ">" +planes[key].airplaneId+ "</option>"
+                         console.log(html)
                      }
                      document.getElementById("airplane-select").innerHTML = html;
              }
@@ -16,31 +18,34 @@ function setSelectors(){ // MAKE IT POSSIBLE TO HAVE A SEARCH FUNCTION IN THE SE
                      url:"http://localhost:8080/api/airport/all",
                      type:"get",
                      success: function(ports) {
+                     console.table(ports)
                             html = "";
                             console.table(ports)
 
                              for(var key in ports) {
                                  html += "<option value=" + ports[key].id  + ">" +ports[key].name + "</option>"
+                                 console.log(html)
                              }
                              document.getElementById("airport-select").innerHTML = html;
                      }
                 });
 }
-myFunction(){
+function myFunction(){
     var planeId =$("#airplane-select").val();
-    var airportId =$("#airplane-select").val();
+    console.log(planeId)
+    var airportId =$("#airport-select").val();
+    console.log(airportId)
     $.ajax({
         url:"http://localhost:8080/api/airplane/flyPlaneTo/"+planeId+"/"+airportId,
-        type: "put"
+        type: "put",
         success: function(){
         alert("you have flown to the given location");
         $.get( "airplane/index.html", function( data ) {
               $( "#page-home" ).html( data );
             });
-        }
-        failure: function(){
+        },
+        error: function(){
         alert("this was not allowed!");
-        }
         }
     })
     $("#airport-select").val("");
@@ -48,4 +53,4 @@ myFunction(){
 }
 $(document).ready(function () {
     setSelectors();
-}
+});

@@ -7,28 +7,27 @@ function setSelectors(){ // MAKE IT POSSIBLE TO HAVE A SEARCH FUNCTION IN THE SE
                     console.table(planes)
 
                      for(var key in planes) {
-                         html += "<option value=" + planes[key].id  + ">" +planes[key].name + "</option>"
+                         html += "<option value=" + planes[key].id  + ">" +planes[key].airplaneId+ "</option>"
                      }
                      document.getElementById("airplane-select").innerHTML = html;
              }
         });
 }
 
-myFunction(){
+function myFunction(){
     var id =$("#airplane-select").val();
     var amount =$("#fuel").val();
     $.ajax({
         url:"http://localhost:8080/api/airplane/tank/"+id+"/"+amount,
-        type: "put"
+        type: "put",
         success: function(){
         alert("you have succesfully tanked");
         $.get( "airplane/index.html", function( data ) {
               $( "#page-home" ).html( data );
             });
-        }
-        failure: function(){
+        },
+        error: function(){
         alert("this was not allowed!");
-        }
         }
     })
     $("#fuel").val("");
@@ -38,4 +37,4 @@ myFunction(){
 
 $(document).ready(function () {
     setSelectors();
-}
+});

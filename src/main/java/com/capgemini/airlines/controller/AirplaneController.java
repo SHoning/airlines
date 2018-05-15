@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,8 +22,14 @@ public class AirplaneController {
     private AirportRepository airportRepository;
 
     @GetMapping("/all")
-    public Iterable<Airplane> getAllAirplanes() {
-        return airplaneRepository.findAll();
+    public List<AirplaneDto> getAllAirplanes() {
+        Iterable<Airplane> airplanes = airplaneRepository.findAll();
+        List<AirplaneDto> dtoList = new ArrayList<>();
+        for(Airplane airplane:airplanes){
+            AirplaneDto dto = new AirplaneDto(airplane);
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 
     @GetMapping("/{id}")

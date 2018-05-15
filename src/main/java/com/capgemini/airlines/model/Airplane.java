@@ -17,6 +17,5 @@ public class Airplane {
 
     @ManyToOne
     @JoinColumn(name="airport_id")
-    @JsonIgnore
     private Airport airport;
 }

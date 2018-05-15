@@ -60,7 +60,7 @@ $(document).ready(function () {
         columns: [
             { "data": "airplaneId" },
             { "data": "fuelInTons" },
-            { "data": "airport.name" },
+            { "data": "airportName" },
         ]
     });
 

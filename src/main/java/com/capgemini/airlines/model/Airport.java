@@ -1,5 +1,6 @@
 package com.capgemini.airlines.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,5 +16,6 @@ public class Airport {
     private String name;
 
     @OneToMany(mappedBy = "airport")
+    @JsonIgnore
     private List<Airplane> airplanes;
 }

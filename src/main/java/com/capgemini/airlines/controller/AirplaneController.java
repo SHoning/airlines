@@ -54,6 +54,17 @@ public class AirplaneController {
         this.airplaneRepository.save(airplaneToChange);
     }
 
+    @PutMapping("/tank/{id}/{amount}")
+    public ResponseEntity tankPlane(@PathVariable long planeId, @PathVariable int amount){
+        Airplane airplane = this.airplaneRepository.findById(planeId).get();
+        if (airplane.getFuelInTons()+ amount > 5) {
+            return ResponseEntity.badRequest().build();
+        }
+        airplane.setFuelInTons(airplane.getFuelInTons()+amount);
+        this.airplaneRepository.save(airplane);
+        return ResponseEntity.ok().build();
+    }
+
     @PutMapping("flyPlaneTo/{planeId}/{airportId}")
     public ResponseEntity flyAirplane(@PathVariable long planeId, @PathVariable long airportId){
         Airplane airplane = this.airplaneRepository.findById(planeId).get();

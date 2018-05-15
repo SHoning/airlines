@@ -1,5 +1,6 @@
 package com.capgemini.airlines.controller;
 
+import com.capgemini.airlines.dto.AirplaneDto;
 import com.capgemini.airlines.model.Airplane;
 import com.capgemini.airlines.model.Airport;
 import com.capgemini.airlines.repository.AirplaneRepository;
@@ -33,8 +34,14 @@ public class AirplaneController {
     }
 
     @PostMapping("/new")
-    public void createAirplane(Airplane airplane) { //RESPONSE ENTITIES?
-        airplaneRepository.save(airplane);
+    public void createAirplane(AirplaneDto airplaneDto) { //RESPONSE ENTITIES?
+        Airplane airplane = new Airplane();
+
+        airplane.setFuelInTons(airplaneDto.getFuelInTons());
+        airplane.setAirplaneId(airplaneDto.getAirplaneId());
+        Airport airport = this.airportRepository.findById(airplaneDto.getAirportId()).get();
+        airplane.setAirport(airport);
+        this.airplaneRepository.save(airplane);
     }
 
     @PutMapping("/update/{id}")

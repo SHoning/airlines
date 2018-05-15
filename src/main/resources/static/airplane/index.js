@@ -1,7 +1,24 @@
+function setSelectors(){ // MAKE IT POSSIBLE TO HAVE A SEARCH FUNCTION IN THE SELECTORS IF NECESSARY
+        $.ajax({
+             url:"http://localhost:8080/api/airport/all",
+             type:"get",
+             success: function(ports) {
+                    html = "";
+                    console.table(ports)
+
+                     for(var key in ports) {
+                         html += "<option value=" + ports[key].id  + ">" +ports[key].name + "</option>"
+                     }
+                     document.getElementById("airport-select").innerHTML = html;
+             }
+        });
+}
+
 function postNewAirplane(){
     var plane = {
         airplaneId :$("#name").val(),
         fuelInTons :$("#fuel").val(),
+        airportId: $("#airport-select").val(),
     }
     $.post("http://localhost:8080/api/airplane/new", plane, function(result) {
             getData();

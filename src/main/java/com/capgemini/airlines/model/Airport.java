@@ -12,6 +12,8 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String name;
+
     @OneToMany(mappedBy = "Airport")
     private List<Airplane> Airplanes;
 }
